@@ -17,7 +17,7 @@ fun repeatedString(s: String, n: Long): Long {
     return asFound + asFoundDiff
 }
 
-@Deprecated("This is algorithm does not perform well on big inputs. Use repeatedString instead.")
+@Deprecated("This algorithm does not perform well on big inputs. Use repeatedString instead.")
 fun repeatedStringOld(s: String, n: Long): Long {
     var newLetter = s
     var letterSize = s.length
