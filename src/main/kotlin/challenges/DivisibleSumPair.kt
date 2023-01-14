@@ -8,11 +8,13 @@ fun divisibleSumPairs(n: Int, k: Int, ar: Array<Int>): Int {
 
     var contPairs = 0
 
-    for ((i, _) in ar.withIndex()){
-        for ((j, _) in ar.withIndex()){
+    for ((i, v) in ar.withIndex()){
+        for ((j, w) in ar.withIndex()){
             if (i < j){
-                val isDivisible = (i+j) % k
-                if (isDivisible == 0)contPairs++
+                val isDivisible = (v+w) % k
+                if (isDivisible == 0){
+                    contPairs++
+                }
             }
         }
     }
