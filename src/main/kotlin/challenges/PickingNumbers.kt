@@ -10,7 +10,7 @@ fun pickingNumbersDeprecated(a: Array<Int>): Int {
     // Write your code here
     var biggestsize = 0
 
-
+// TALVEZ VALHA A PENA ORDENAR
 
     for ((outIndex, outValue) in a.withIndex()) {
         println("----------------------------------")
