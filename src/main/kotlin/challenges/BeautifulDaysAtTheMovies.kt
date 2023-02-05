@@ -1,5 +1,8 @@
 package challenges
 
+/**
+ * @see <a href="https://www.hackerrank.com/challenges/day-of-the-programmer/problem">Day of the Programmer</a>
+ */
 fun beautifulDays(i: Int, j: Int, k: Int): Int {
     // Write your code here
 
