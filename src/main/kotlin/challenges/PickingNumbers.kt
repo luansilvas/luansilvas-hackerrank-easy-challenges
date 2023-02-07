@@ -1,18 +1,28 @@
+package challenges
 
 
-//fun pickingNumbers(a: Array<Int>): Int {
-//    // Write your code here
-//    var biggestsize = 0
-//
-//    var currentArray =
-//    for((index,value) in a.withIndex()){
-//        var sequence = 0
-//        for(number in index..a.size-1){
-//
-//            val operation = abs(value+a[number+1])
-//            if(operation<=1) sequence++
-//        }
-//        if(sequence>biggestsize) biggestsize=sequence
-//    }
-//    return biggestsize
-//}
+/**
+ * @see <a href="https://www.hackerrank.com/challenges/picking-numbers/problem">Picking Numbers</a>
+ */
+fun pickingNumbers(a: Array<Int>): Int {
+    // Write your code here
+    val quantityByNumber = a.groupBy { it }
+    val uniqueNumbers = a.toSet().toList()
+
+    var biggestSubArray: Int = quantityByNumber.values.maxByOrNull { it.size }!!.size
+
+    for (number in uniqueNumbers) {
+        if (uniqueNumbers.contains(number + 1)) {
+            val firstArrayBigger = quantityByNumber[number]!!.size
+            val secondArrayBigger = quantityByNumber[number + 1]!!.size
+
+            if ((firstArrayBigger + secondArrayBigger) > biggestSubArray) biggestSubArray =
+                firstArrayBigger + secondArrayBigger
+
+        }
+
+    }
+
+    return biggestSubArray
+}
+
