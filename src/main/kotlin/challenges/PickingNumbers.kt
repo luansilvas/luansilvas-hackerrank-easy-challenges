@@ -1,106 +1,39 @@
 package challenges
 
-import kotlin.math.abs
-
 
 /**
  * @see <a href="https://www.hackerrank.com/challenges/picking-numbers/problem">Picking Numbers</a>
  */
-fun pickingNumbersDeprecated(a: Array<Int>): Int {
-    // Write your code here
-    var biggestsize = 0
-
-
-
-    for ((outIndex, outValue) in a.withIndex()) {
-        println("----------------------------------")
-
-        println("current biggest array size $biggestsize")
-
-        var currentList = mutableListOf<Int>()
-        var sequence = currentList.size
-
-        currentList.add(outValue)
-        for ((inIndex, inValue) in a.withIndex()) {
-
-            if (
-                (inIndex != outIndex)
-            ) {
-
-                val biggerComparingTo = currentList.filter {
-                    abs(it - inValue) > 1
-                }
-
-                if (biggerComparingTo.isEmpty()) {
-                    println("o valor $inValue tem uma diferença de 0 ou 1 pro outros elementos")
-                    sequence++
-                    currentList.add(inValue)
-                } else {
-                    val compatibleNumbers = currentList.filter { !(it in biggerComparingTo) }.toMutableList()
-
-                    println("Numeros compatíveis")
-
-                    compatibleNumbers.map { println(">>>> $it") }
-
-                    val isNumberFitable = compatibleNumbers.any {
-                        abs(it - inValue) > 1
-                    }
-                    if (!isNumberFitable) {
-                        currentList = compatibleNumbers
-                        currentList.add(inValue)
-                    }
-                }
-            }
-        }
-
-        println("ARRAY ATÉ AGORA PARTINDO DE $outValue")
-        currentList.map { println(">>> $it") }
-        if (sequence > biggestsize) {
-            biggestsize = sequence
-        }
-
-        currentList = mutableListOf()
-
-    }
-    return biggestsize
-
-}
-
 fun pickingNumbers(a: Array<Int>): Int {
     // Write your code here
-    var biggestsize = 1
+    val quantityByNumber = a.groupBy { it }
+    val uniqueNumbers = a.toSet().toList()
 
-    a.map { number ->
+    println("lista antiga")
+
+    a.map { println(">>> $it") }
+
+    println("lista sem repetir")
+
+    uniqueNumbers.map { println(">>> $it") }
 
 
+    var biggestSubArray: Int = quantityByNumber.values.maxByOrNull { it.size }!!.size
 
-        val greatDiff = a.filter { abs(it - number) <= 1 }.toMutableList()
+    for (number in uniqueNumbers) {
+        if (uniqueNumbers.contains(number + 1)) {
+            val firstArrayBigger = quantityByNumber[number]!!.size
+            val secondArrayBigger = quantityByNumber[number + 1]!!.size
 
-        val mustExclude = mutableListOf<Int>()
-        greatDiff.forEach { elementOut ->
+            println("tamanho primeiro array ${quantityByNumber[number]!!.size} de chave ${number} e agr do segundo ${quantityByNumber[number + 1]!!.size} de chave ${number + 1}")
 
-            greatDiff.forEach { elementIn ->
-                val comparing = abs(elementOut - elementIn) > 1
-                if (comparing) mustExclude.add(elementIn)
-            }
-
-            println("números a serem excluidos da lista")
-
+            if ((firstArrayBigger + secondArrayBigger) > biggestSubArray) biggestSubArray =
+                firstArrayBigger + secondArrayBigger
 
         }
-        mustExclude.map { println(">>> $it") }
-        greatDiff.removeAll(mustExclude)
-
-
-        if (greatDiff.size > biggestsize)
-            biggestsize = greatDiff.size
-
 
     }
 
-
-
-    return biggestsize
-
+    return biggestSubArray
 }
 

@@ -49,5 +49,12 @@ class PickingNumbersKtTest {
         assertEquals(expected,result)
     }
 
+    @Test
+    fun `case 7 - should calculate the subarray with the smallest difference successfully`() {
+        val expected = 50
+        val result = pickingNumbers(arrayOf(4, 97, 5, 97, 97, 4, 97, 4, 97, 97, 97, 97, 4, 4, 5, 5, 97, 5, 97, 99, 4, 97, 5, 97, 97, 97, 5, 5, 97, 4, 5, 97, 97, 5, 97, 4, 97, 5, 4, 4, 97, 5, 5, 5, 4, 97, 97, 4, 97, 5, 4, 4, 97, 97, 97, 5, 5, 97, 4, 97, 97, 5, 4, 97, 97, 4, 97, 97, 97, 5, 4, 4, 97, 4, 4, 97, 5, 97, 97, 97, 97, 4, 97, 5, 97, 5, 4, 97, 4, 5, 97, 97, 5, 97, 5, 97, 5, 97, 97, 97))
+        assertEquals(expected,result)
+    }
+
 
 }
