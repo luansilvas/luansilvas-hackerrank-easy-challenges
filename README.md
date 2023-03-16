@@ -18,4 +18,4 @@ You can find all the challenges resolution at
 
 on top of each of them you can find the link to it.
 
-Hope you like them - and suggestions I'll always be welcome! 🤗
+Hope you like them - and suggestions are always welcome! 🤗

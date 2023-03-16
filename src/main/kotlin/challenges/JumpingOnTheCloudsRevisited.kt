@@ -5,13 +5,14 @@ package challenges
  */
 fun jumpingOnClouds(c: Array<Int>, k: Int): Int {
     var remainingEnergy = 100
-    var keepGoing = true
-    var index = k
+    var index = if (k < c.size) k
+    else k-c.size
+
     remainingEnergy--
 
     if (c[0] == 1) remainingEnergy -=2
 
-    while (keepGoing){
+    while (index!=0){
         remainingEnergy --
         if (c[index] == 1) remainingEnergy -=2
 
@@ -19,7 +20,6 @@ fun jumpingOnClouds(c: Array<Int>, k: Int): Int {
         else {
             index = k-(c.size-index)
         }
-        keepGoing = index != 0
     }
 
 
